@@ -4,16 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Ondřej Lukáš</title>
-<meta name="description" content="Ondřej Lukáš — PhD researcher in AI & cybersecurity at the Stratosphere Lab, CTU in Prague. Explainable AI for network threat detection.">
+<meta name="description" content="Ondřej Lukáš, PhD researcher in AI & cybersecurity at the Stratosphere Lab, CTU in Prague. Explainable AI for network threat detection.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
-  /* Minimal: one reading column, deep whitespace, a single teal accent; the only flair is a faint reactive network in the hero. */
+  /* Desktop: fixed identity sidebar + scrolling content. Mobile: collapses to a compact single-column hero. */
   :root{
     --bg:#fbfcfc; --fg:#12191f; --muted:#5f6b76; --faint:#8a95a0;
     --line:#e8ecef; --accent:#0a9c8c; --accent2:#1f93c2; --accent-ink:#0a8073;
-    --maxw:64rem;
+    --maxw:86rem;
     --sans:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,Helvetica,Arial,sans-serif;
     --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
     color-scheme:light;
@@ -30,29 +30,18 @@
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
+  body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
   img{max-width:100%}
   a{color:var(--accent-ink);text-decoration:none}
-  a:hover{text-decoration:underline;text-underline-offset:3px}
   ::selection{background:var(--accent);color:var(--bg)}
   .grad{background:linear-gradient(100deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:clamp(1.25rem,5vw,2rem)}
 
-  /* nav */
-  header.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;
-    background:color-mix(in srgb,var(--bg) 84%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-  .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.9rem}
-  .brand{font-family:var(--mono);font-size:.9rem;color:var(--fg);display:inline-flex;align-items:center;gap:.5rem}
-  .brand .dot{width:.5rem;height:.5rem;border-radius:50%;background:var(--accent)}
-  nav.links{display:flex;gap:1.5rem;align-items:center}
-  nav.links a{font-size:.88rem;color:var(--muted)}
-  nav.links a:hover{color:var(--fg);text-decoration:none}
+  /* theme toggle */
   .toggle{border:1px solid var(--line);color:var(--muted);background:transparent;border-radius:50%;
-    width:2.5rem;height:2.5rem;padding:0;display:grid;place-items:center;cursor:pointer;transition:.16s}
+    width:2.4rem;height:2.4rem;padding:0;display:grid;place-items:center;cursor:pointer;transition:.16s}
   .toggle:hover{color:var(--accent-ink);border-color:var(--accent)}
-  .toggle svg{width:18px;height:18px}
+  .toggle svg{width:17px;height:17px}
   .toggle .rays,.toggle .bulb{transition:opacity .22s,fill .22s}
-  /* dark state: rays off, bulb glows */
   @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .toggle{color:var(--accent)}
     :root:not([data-theme="light"]) .toggle .rays{opacity:0}
     :root:not([data-theme="light"]) .toggle .bulb{fill:color-mix(in srgb,var(--accent) 34%,transparent)}}
@@ -62,74 +51,92 @@
   .toggle.float{position:fixed;top:calc(env(safe-area-inset-top,0px) + 1rem);right:1rem;z-index:40;
     background:color-mix(in srgb,var(--bg) 78%,transparent);backdrop-filter:blur(8px)}
 
-  /* hero */
-  .hero{position:relative;overflow:hidden}
-  .hero canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.62;pointer-events:none}
-  .hero .wrap{position:relative;z-index:2;padding-block:clamp(2.8rem,7vw,4.5rem);
-    display:grid;grid-template-columns:1fr auto;gap:clamp(1.5rem,5vw,3.5rem);align-items:center}
-  .avatar{width:clamp(140px,20vw,180px);aspect-ratio:1;border-radius:50%;position:relative;overflow:hidden;display:grid;place-items:center;
-    flex-shrink:0;background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 20%,var(--bg)),color-mix(in srgb,var(--accent2) 16%,var(--bg)));
-    box-shadow:0 0 0 1px var(--line),0 0 0 6px color-mix(in srgb,var(--accent) 12%,transparent)}
-  .avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-  .avatar span{font-family:var(--mono);font-size:2.3rem;font-weight:500;color:var(--accent-ink);letter-spacing:.02em}
-  @media (max-width:720px){
-    .hero .wrap{grid-template-columns:1fr}
-    .avatar{order:-1;justify-self:start;width:clamp(96px,26vw,132px)}
-  }
-  .eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.15em;text-transform:uppercase;color:var(--faint)}
-  h1{font-weight:600;font-size:clamp(2.7rem,8vw,4.4rem);line-height:1.04;margin:1.1rem 0 0;letter-spacing:-.02em;text-wrap:balance}
-  .role{font-size:clamp(1.05rem,2.6vw,1.25rem);color:var(--muted);margin-top:1.1rem}
-  .lede{max-width:42ch;color:var(--muted);margin-top:1.4rem;font-size:1.05rem}
-  .cta{display:flex;flex-wrap:wrap;gap:1.4rem;margin-top:2.2rem;align-items:center}
-  .link{font-size:.95rem;color:var(--fg);display:inline-flex;align-items:center;gap:.4rem}
-  .link .a{color:var(--faint);transition:transform .16s,color .16s}
-  .link:hover{text-decoration:none}
-  .link:hover .a{color:var(--accent-ink);transform:translate(2px,-2px)}
-  .link:not(:last-child){border-right:1px solid var(--line);padding-right:1.4rem}
+  /* ---- two-pane shell ---- */
+  .layout{max-width:var(--maxw);margin-inline:auto;display:grid;grid-template-columns:minmax(17rem,29%) 1fr}
 
-  /* sections */
-  section{padding-block:clamp(2.4rem,5vw,3.6rem);border-top:1px solid var(--line)}
-  .kicker{font-family:var(--mono);font-size:.74rem;letter-spacing:.15em;text-transform:uppercase;color:var(--faint);margin-bottom:1.1rem}
-  h2{font-weight:600;font-size:clamp(1.5rem,3.6vw,2rem);margin:0;letter-spacing:-.015em;text-wrap:balance;max-width:22ch}
-  h2::after{content:"";display:block;width:2.4rem;height:3px;margin-top:1rem;border-radius:2px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
-  .prose{max-width:58ch;color:var(--muted);margin-top:1.3rem}
-  .prose p{margin:1.1rem 0}
+  /* ---- sidebar ---- */
+  .side{position:sticky;top:0;align-self:start;min-height:100vh;overflow:hidden;
+    display:flex;flex-direction:column;justify-content:flex-start;
+    padding:clamp(3rem,9vh,5.5rem) clamp(1.4rem,2.4vw,2.2rem) clamp(2rem,4vw,3rem);border-right:1px solid var(--line)}
+  .side canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.55;pointer-events:none}
+  .side .in{position:relative;z-index:2}
+  .avatar{width:118px;aspect-ratio:1;border-radius:50%;position:relative;overflow:hidden;display:grid;place-items:center;
+    background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 20%,var(--bg)),color-mix(in srgb,var(--accent2) 16%,var(--bg)));
+    box-shadow:0 0 0 1px var(--line),0 0 0 6px color-mix(in srgb,var(--accent) 12%,transparent);margin-bottom:1.3rem}
+  .avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .avatar span{font-family:var(--mono);font-size:1.7rem;font-weight:500;color:var(--accent-ink)}
+  .eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+  .side h1{font-weight:600;font-size:clamp(1.9rem,3vw,2.4rem);line-height:1.05;margin:.7rem 0 0;letter-spacing:-.02em}
+  .side .role{font-size:1rem;color:var(--muted);margin-top:.55rem}
+  .side .lede{font-size:.92rem;color:var(--muted);margin-top:.9rem;max-width:32ch}
+  .links{display:flex;flex-direction:column;margin-top:1.3rem}
+  .links a{font-size:.9rem;color:var(--fg);padding:.34rem 0;display:inline-flex;align-items:center;gap:.45rem;width:fit-content}
+  .links a .a{color:var(--faint);transition:transform .16s,color .16s}
+  .links a:hover .a{color:var(--accent-ink);transform:translate(2px,-2px)}
+  .side .mail{font-family:var(--mono);font-size:.82rem;color:var(--muted);margin-top:1.1rem;word-break:break-all}
+
+  /* ---- content ---- */
+  .content{min-width:0}
+  .content section{padding:clamp(1.7rem,3vw,2.5rem) clamp(1.5rem,3.2vw,2.8rem);border-bottom:1px solid var(--line)}
+  .content section:last-child{border-bottom:0}
+  .kicker{font-family:var(--mono);font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--faint);margin-bottom:.7rem}
+  h2{font-weight:600;font-size:clamp(1.35rem,2.6vw,1.75rem);margin:0;letter-spacing:-.015em;text-wrap:balance;max-width:24ch}
+  h2::after{content:"";display:block;width:2.2rem;height:3px;margin-top:.7rem;border-radius:2px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+  .prose{max-width:82ch;color:var(--muted);margin-top:1rem}
+  .prose p{margin:.7rem 0}
+  .prose a{color:var(--accent-ink)}
   .prose em{color:var(--fg);font-style:normal;border-bottom:1px solid var(--accent);padding-bottom:1px}
 
-  .areas{display:grid;gap:2.2rem 2.5rem;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));margin-top:2.4rem}
-  .area .ico{width:30px;height:30px;color:var(--accent);margin-bottom:.95rem}
+  .areas{display:grid;gap:1.3rem 1.8rem;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));margin-top:1.5rem}
+  .area .ico{width:26px;height:26px;color:var(--accent);margin-bottom:.6rem}
   .area .ico svg{width:100%;height:100%}
-  .area .n{font-family:var(--mono);font-size:.74rem;color:var(--accent-ink)}
-  .area h3{font-weight:600;font-size:1.02rem;margin:.6rem 0 .5rem}
-  .area p{margin:0;color:var(--muted);font-size:.94rem}
+  .area .n{font-family:var(--mono);font-size:.72rem;color:var(--accent-ink)}
+  .area h3{font-weight:600;font-size:1rem;margin:.45rem 0 .35rem}
+  .area p{margin:0;color:var(--muted);font-size:.9rem}
 
-  .list{margin-top:2.2rem;display:flex;flex-direction:column}
-  .item{display:flex;gap:1.5rem;padding:1.4rem 0;border-top:1px solid var(--line);align-items:baseline;transition:padding-left .18s}
-  .item:last-child{border-bottom:1px solid var(--line)}
-  .item:hover{padding-left:.5rem}
-  .item .idx{font-family:var(--mono);font-size:1.05rem;font-weight:500;min-width:2.7rem;
+  .plist{margin-top:1.5rem;display:flex;flex-direction:column}
+  .plist a{display:flex;gap:1.2rem;padding:1rem 0;border-top:1px solid var(--line);align-items:baseline;
+    text-decoration:none;color:inherit;transition:padding-left .18s}
+  .plist a:last-child{border-bottom:1px solid var(--line)}
+  .plist a:hover{padding-left:.5rem}
+  .plist .idx{font-family:var(--mono);font-size:1rem;font-weight:500;min-width:2.4rem;
     background:linear-gradient(120deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .item .body{flex:1;min-width:0}
-  .item .body .h{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap}
-  .item h3{font-weight:600;font-size:1.08rem;margin:0}
-  .item .arrow{color:var(--faint);font-family:var(--mono);transition:.16s}
-  .item:hover .arrow{color:var(--accent-ink);transform:translate(2px,-2px)}
-  .item p{margin:.4rem 0 0;color:var(--muted);font-size:.93rem;max-width:56ch}
-  .item .meta{font-family:var(--mono);font-size:.72rem;color:var(--faint);margin-top:.5rem;display:flex;gap:.9rem;flex-wrap:wrap}
-  #projects .item .meta span{display:inline-flex;align-items:center;gap:.4rem}
-  #projects .item .meta span::before{content:"";width:5px;height:5px;border-radius:50%;
-    background:linear-gradient(120deg,var(--accent),var(--accent2))}
-  .feat{font-family:var(--mono);font-size:.64rem;letter-spacing:.05em;text-transform:uppercase;color:var(--bg);
-    background:linear-gradient(120deg,var(--accent),var(--accent2));border-radius:999px;padding:.18rem .55rem;margin-left:.65rem;white-space:nowrap}
-  a.item{text-decoration:none;color:inherit}
+  .plist .b{flex:1;min-width:0}
+  .plist .h{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+  .plist h3{font-weight:600;font-size:1.05rem;margin:0}
+  .plist .arrow{color:var(--faint);font-family:var(--mono);transition:.16s}
+  .plist a:hover .arrow{color:var(--accent-ink);transform:translate(2px,-2px)}
+  .plist p{margin:.35rem 0 0;color:var(--muted);font-size:.9rem;max-width:60ch}
+  .plist .meta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:.45rem;font-family:var(--mono);font-size:.7rem;color:var(--faint)}
+  .plist .meta span{display:inline-flex;align-items:center;gap:.35rem}
+  .plist .meta span::before{content:"";width:5px;height:5px;border-radius:50%;background:linear-gradient(120deg,var(--accent),var(--accent2))}
 
-  .contact h2{max-width:none}
-  .mail{font-family:var(--mono);font-size:clamp(1.05rem,3.4vw,1.55rem);margin-top:1.2rem;display:inline-block}
-  .social{display:flex;flex-wrap:wrap;gap:1.4rem;margin-top:1.6rem}
-  .social a{font-size:.92rem;color:var(--muted)}
-  .social a:hover{color:var(--fg);text-decoration:none}
-  footer{padding-block:2.4rem;border-top:1px solid var(--line);color:var(--faint);font-family:var(--mono);font-size:.76rem}
-  footer .wrap{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:space-between}
+  .tlist{margin-top:1.4rem;display:flex;flex-direction:column}
+  .titem{display:flex;gap:1.2rem;padding:.95rem 0;border-top:1px solid var(--line);align-items:baseline}
+  .titem:last-child{border-bottom:1px solid var(--line)}
+  .titem .mk{font-family:var(--mono);font-size:.9rem;min-width:1.4rem;
+    background:linear-gradient(120deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .titem .b{flex:1;min-width:0}
+  .titem .h{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+  .titem h3{font-weight:600;font-size:1rem;margin:0}
+  .titem .org{font-family:var(--mono);font-size:.72rem;color:var(--faint)}
+  .titem p{margin:.3rem 0 0;color:var(--muted);font-size:.9rem}
+
+  /* ---- mobile: collapse to compact single-column hero ---- */
+  @media (max-width:840px){
+    .layout{grid-template-columns:1fr}
+    .side{position:static;min-height:0;justify-content:flex-start;border-right:0;border-bottom:1px solid var(--line);
+      padding:clamp(2rem,8vw,2.8rem) clamp(1.5rem,6vw,2rem) clamp(1.6rem,6vw,2.2rem)}
+    .avatar{width:96px;margin-bottom:1rem}
+    .avatar span{font-size:1.5rem}
+    .side h1{font-size:clamp(2.2rem,9vw,2.9rem)}
+    .side .role{font-size:1.05rem;margin-top:.6rem}
+    .side .lede{font-size:1rem;max-width:44ch;margin-top:.9rem}
+    .links{flex-direction:row;flex-wrap:wrap;gap:.5rem 1.3rem;margin-top:1.2rem}
+    .links a{padding:0}
+    .side .mail{margin-top:1rem}
+    .content section{padding-inline:clamp(1.5rem,6vw,2rem)}
+  }
 
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} *{transition:none!important}}
 </style>
@@ -147,38 +154,38 @@
   </svg>
 </button>
 
-<div class="hero" id="top">
-  <canvas id="net" aria-hidden="true"></canvas>
-  <div class="wrap">
-    <div class="hero-text">
+<div class="layout">
+  <aside class="side">
+    <canvas id="net" aria-hidden="true"></canvas>
+    <div class="in">
+      <div class="avatar"><span>OL</span><img src="headshot.jpg" alt="Ondřej Lukáš" onerror="this.remove()"></div>
       <p class="eyebrow">Stratosphere Lab · CTU in Prague</p>
       <h1>Ondřej <span class="grad">Lukáš</span></h1>
       <p class="role">PhD researcher in AI &amp; Cybersecurity</p>
-      <p class="lede">I build machine-learning that detects threats in network traffic — and the methods to measure how much you can trust what it tells you.</p>
-      <div class="cta">
-        <a class="link" href="https://github.com/ondrej-lukas">GitHub <span class="a">↗</span></a>
-        <a class="link" href="https://cs.fel.cvut.cz/en/people/lukasond">Faculty page <span class="a">↗</span></a>
-        <a class="link" href="mailto:ondrej.lukas@aic.fel.cvut.cz">Email <span class="a">↗</span></a>
-      </div>
+      <p class="lede">I build machine-learning that detects threats in network traffic, and the methods to measure how much you can trust what it tells you.</p>
+      <nav class="links">
+        <a href="https://github.com/ondrej-lukas">GitHub <span class="a">↗</span></a>
+        <a href="https://scholar.google.com/citations?user=uycJe_QAAAAJ&amp;hl=en">Google Scholar <span class="a">↗</span></a>
+        <a href="https://orcid.org/0000-0002-7922-8301">ORCID <span class="a">↗</span></a>
+        <a href="https://www.linkedin.com/in/ondřej-lukáš-7939347b">LinkedIn <span class="a">↗</span></a>
+        <a href="https://x.com/ondrej_lukas">X / @ondrej_lukas <span class="a">↗</span></a>
+        <a href="https://cs.fel.cvut.cz/en/people/lukasond">Faculty page <span class="a">↗</span></a>
+      </nav>
+      <a class="mail" href="mailto:ondrej.lukas@aic.fel.cvut.cz">ondrej.lukas@aic.fel.cvut.cz</a>
     </div>
-    <div class="avatar"><span>OL</span><img src="headshot.jpg" alt="Ondřej Lukáš" onerror="this.remove()"></div>
-  </div>
-</div>
+  </aside>
 
-<main>
-  <section id="about">
-    <div class="wrap">
+  <main class="content">
+    <section id="about">
       <p class="kicker">About</p>
       <h2>Detection you can question, not just trust.</h2>
       <div class="prose">
-        <p>I'm a PhD student at the <a href="https://www.stratosphereips.org/">Stratosphere Laboratory</a> (AI Center, Faculty of Electrical Engineering, CTU in Prague). My work lives where machine learning meets network security: catching malicious behaviour in traffic, and testing whether the explanations behind those detections actually hold up.</p>
-        <p>I also design environments where autonomous agents learn to attack and defend, and build tools to reveal <em>how</em> those agents behave — not just the score they end up with.</p>
+        <p>I'm a PhD student at the <a href="https://www.stratosphereips.org/">Stratosphere Laboratory</a> (AI Center, FEE CTU in Prague), working where machine learning meets network security: catching malicious behaviour in traffic, and testing whether the explanations behind those detections actually hold up.</p>
+        <p>I also design environments where autonomous agents learn to attack and defend, and build tools to reveal <em>how</em> those agents behave, not just the score they end up with.</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="research">
-    <div class="wrap">
+    <section id="research">
       <p class="kicker">Research directions</p>
       <h2>Three threads I keep pulling on.</h2>
       <div class="areas">
@@ -186,106 +193,78 @@
           <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 12S5 5 12 5s10.5 7 10.5 7-3.5 7-10.5 7S1.5 12 1.5 12Z"/><circle cx="12" cy="12" r="3"/></svg></div>
           <div class="n">/ explainability</div>
           <h3>Explanations you can measure</h3>
-          <p>Detecting threats in network traffic — and building rigorous metrics for the quality of the explanation behind every decision.</p>
+          <p>Detecting threats in network traffic, with rigorous metrics for the quality of the explanation behind each decision.</p>
         </div>
         <div class="area">
           <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5 4.5 5.5v5c0 5 3.3 8.2 7.5 9.5 4.2-1.3 7.5-4.5 7.5-9.5v-5L12 2.5Z"/><path d="m9 12 2 2 4-4"/></svg></div>
           <div class="n">/ autonomy</div>
           <h3>Autonomous attackers &amp; defenders</h3>
-          <p>Reinforcement-learning environments where offensive and defensive agents co-evolve in realistic security scenarios.</p>
+          <p>Reinforcement-learning environments where offensive and defensive agents co-evolve in realistic scenarios.</p>
         </div>
         <div class="area">
           <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l3-7 5 14 3-7h5"/></svg></div>
           <div class="n">/ behaviour</div>
           <h3>How agents actually behave</h3>
-          <p>Turning raw agent trajectories into interpretable characterisations of strategy — behaviour you can inspect, not just reward.</p>
+          <p>Turning raw agent trajectories into interpretable characterisations of strategy: behaviour you can inspect.</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="projects">
-    <div class="wrap">
+    <section id="projects">
       <p class="kicker">Selected projects</p>
-      <h2>Code and environments I work on.</h2>
-      <div class="list">
-        <a class="item" href="https://github.com/stratosphereips/NetSecGame">
+      <h2>Code and projects I work on.</h2>
+      <div class="plist">
+        <a href="https://github.com/stratosphereips/NetSecGame">
           <div class="idx">01</div>
-          <div class="body">
+          <div class="b">
             <div class="h"><h3>NetSecGame</h3><span class="arrow">↗</span></div>
-            <p>A reinforcement-learning environment for developing and evaluating autonomous attackers and defenders in realistic network-security scenarios.</p>
+            <p>An RL environment for developing and evaluating autonomous attackers and defenders in realistic network-security scenarios.</p>
             <div class="meta"><span>Python</span><span>RL environment</span><span>Stratosphere</span></div>
           </div>
         </a>
-        <a class="item" href="https://github.com/ondrej-lukas/agent-behavior-analysis-toolkit">
+        <a href="https://github.com/ondrej-lukas/agent-behavior-analysis-toolkit">
           <div class="idx">02</div>
-          <div class="body">
+          <div class="b">
             <div class="h"><h3>Agent Behavior Analysis Toolkit</h3><span class="arrow">↗</span></div>
-            <p>Tools for analysing the trajectories and behaviour of learned agents — turning raw rollouts into interpretable characterisations.</p>
+            <p>Tools for analysing the trajectories and behaviour of learned agents, turning raw rollouts into interpretable characterisations.</p>
             <div class="meta"><span>Python</span><span>Analysis</span></div>
           </div>
         </a>
-        <a class="item" href="https://github.com/stratosphereips/StratosphereLinuxIPS">
+        <a href="https://github.com/stratosphereips/StratosphereLinuxIPS">
           <div class="idx">03</div>
-          <div class="body">
+          <div class="b">
             <div class="h"><h3>StratosphereLinuxIPS (Slips)</h3><span class="arrow">↗</span></div>
             <p>Open-source, ML-powered intrusion prevention system for Linux, built and maintained at the Stratosphere Lab.</p>
             <div class="meta"><span>Python</span><span>IPS</span><span>Open source</span></div>
           </div>
         </a>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="teaching">
-    <div class="wrap">
+    <section id="teaching">
       <p class="kicker">Teaching &amp; outreach</p>
       <h2>Passing it on.</h2>
-      <div class="list">
-        <div class="item">
-          <div class="idx">→</div>
-          <div class="body">
-            <div class="h"><h3>Teaching Assistant — <a href="https://cybersecurity.bsy.fel.cvut.cz/">Introduction to Cybersecurity</a></h3><span class="meta">CTU in Prague</span></div>
+      <div class="tlist">
+        <div class="titem">
+          <div class="mk">→</div>
+          <div class="b">
+            <div class="h"><h3>Teaching Assistant, <a href="https://cybersecurity.bsy.fel.cvut.cz/">Introduction to Cybersecurity</a></h3><span class="org">CTU in Prague</span></div>
             <p>Helping students take their first steps into security, from fundamentals to hands-on practice.</p>
           </div>
         </div>
-        <div class="item">
-          <div class="idx">→</div>
-          <div class="body">
-            <div class="h"><h3>Lecturer — <a href="https://aidetem.cz/">AI Detem</a></h3><span class="meta">Non-profit</span></div>
-            <p>Running training sessions and workshops with AI Detem, a non-profit bringing general AI education to schools — for both pupils and the teachers guiding them.</p>
+        <div class="titem">
+          <div class="mk">→</div>
+          <div class="b">
+            <div class="h"><h3>Lecturer, <a href="https://aidetem.cz/">AI Detem</a></h3><span class="org">Non-profit</span></div>
+            <p>Training sessions and workshops with AI Detem, a non-profit bringing general AI education to schools, for pupils and the teachers guiding them.</p>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section id="contact" class="contact">
-    <div class="wrap">
-      <p class="kicker">Get in touch</p>
-      <h2>Always up for a good research conversation.</h2>
-      <a class="mail grad" href="mailto:ondrej.lukas@aic.fel.cvut.cz">ondrej.lukas@aic.fel.cvut.cz</a>
-      <div class="social">
-        <a href="https://github.com/ondrej-lukas">GitHub</a>
-        <a href="https://www.linkedin.com/in/ondřej-lukáš-7939347b">LinkedIn</a>
-        <a href="https://x.com/ondrej_lukas">X / @ondrej_lukas</a>
-        <a href="https://scholar.google.com/citations?user=uycJe_QAAAAJ&amp;hl=en">Google Scholar</a>
-        <a href="https://orcid.org/0000-0002-7922-8301">ORCID</a>
-        <a href="https://cs.fel.cvut.cz/en/people/lukasond">Faculty profile</a>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <div class="wrap">
-    <span>© <span id="yr"></span> Ondřej Lukáš · Prague, CZ</span>
-    <span>Stratosphere Lab · CTU in Prague</span>
-  </div>
-</footer>
+    </section>
+  </main>
+</div>
 
 <script>
-  document.getElementById('yr').textContent = new Date().getFullYear();
   var reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
 
   /* theme toggle */
@@ -302,7 +281,7 @@
     });
   })();
 
-  /* faint, calm, cursor-aware network — the single flair */
+  /* network flair in the sidebar / hero */
   (function(){
     var canvas=document.getElementById('net'); if(!canvas) return;
     var ctx=canvas.getContext('2d'), w=0,h=0,dpr=Math.min(devicePixelRatio||1,2),nodes=[],raf=0;
@@ -311,9 +290,9 @@
     function size(){
       var r=canvas.getBoundingClientRect(); w=r.width; h=r.height;
       canvas.width=w*dpr; canvas.height=h*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
-      var count=Math.max(20,Math.min(70,Math.round(w*h/11000)));
+      var count=Math.max(16,Math.min(60,Math.round(w*h/9000)));
       nodes=[]; for(var i=0;i<count;i++){nodes.push({x:Math.random()*w,y:Math.random()*h,
-        vx:(Math.random()-.5)*.32,vy:(Math.random()-.5)*.32});}
+        vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3});}
     }
     canvas.parentElement.addEventListener('mousemove',function(e){
       var r=canvas.getBoundingClientRect(); mouse.x=e.clientX-r.left; mouse.y=e.clientY-r.top;});
@@ -323,19 +302,19 @@
       for(var i=0;i<nodes.length;i++){var n=nodes[i];
         if(!reduce){n.x+=n.vx;n.y+=n.vy; if(n.x<0||n.x>w)n.vx*=-1; if(n.y<0||n.y>h)n.vy*=-1;}
         var mdx=n.x-mouse.x,mdy=n.y-mouse.y,md=Math.hypot(mdx,mdy);
-        if(md<180){ ctx.globalAlpha=(1-md/180)*.85;ctx.strokeStyle=col;ctx.lineWidth=1.4;
+        if(md<170){ ctx.globalAlpha=(1-md/170)*.8;ctx.strokeStyle=col;ctx.lineWidth=1.3;
           ctx.beginPath();ctx.moveTo(n.x,n.y);ctx.lineTo(mouse.x,mouse.y);ctx.stroke(); }
       }
       for(var i=0;i<nodes.length;i++){var a=nodes[i];
         for(var j=i+1;j<nodes.length;j++){var b=nodes[j],dx=a.x-b.x,dy=a.y-b.y,d=Math.hypot(dx,dy);
-          if(d<150){ctx.globalAlpha=(1-d/150)*.55;ctx.strokeStyle=col;ctx.lineWidth=1.1;
+          if(d<120){ctx.globalAlpha=(1-d/120)*.5;ctx.strokeStyle=col;ctx.lineWidth=1;
             ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}}
       }
-      ctx.shadowColor=col;ctx.shadowBlur=9;
+      ctx.shadowColor=col;ctx.shadowBlur=8;
       for(var k=0;k<nodes.length;k++){ctx.globalAlpha=1;ctx.fillStyle=col;
-        ctx.beginPath();ctx.arc(nodes[k].x,nodes[k].y,2.2,0,6.283);ctx.fill();}
+        ctx.beginPath();ctx.arc(nodes[k].x,nodes[k].y,2,0,6.283);ctx.fill();}
       ctx.shadowBlur=0;ctx.globalAlpha=1;
-      if(!reduce||mouse.x>-9999) raf=requestAnimationFrame(draw);
+      raf=requestAnimationFrame(draw);
     }
     size(); draw();
     addEventListener('resize',function(){cancelAnimationFrame(raf); size(); draw();});
